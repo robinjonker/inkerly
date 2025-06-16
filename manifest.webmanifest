@@ -1,1 +1,1 @@
-{"name":"Inkerly","short_name":"Inkerly","start_url":"/inkerly/","display":"standalone","background_color":"#1f2937","theme_color":"#ec4899","lang":"en","scope":"./","icons":[{"src":"icon.png","sizes":"512x512","type":"image/png"}]}
+{"name":"Inkerly","short_name":"Inkerly","start_url":"/inkerly/","display":"standalone","background_color":"#1f2937","theme_color":"#ec4899","lang":"en","scope":"./","icons":[{"src":"/inkerly/icon.png","sizes":"512x512","type":"image/png"}]}
