@@ -1,48 +1,48 @@
-import adapter from '@sveltejs/adapter-static';
-import preprocess from 'svelte-preprocess';
-import { VitePWA } from 'vite-plugin-pwa';
+import adapter from '@sveltejs/adapter-static'
+import preprocess from 'svelte-preprocess'
+import { VitePWA } from 'vite-plugin-pwa'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: preprocess(),
-kit: {
-	adapter: adapter({
-		pages: 'build',
-		assets: 'build',
-		fallback: null,
-		strict: false
-	}),
-	paths: {
-		base: '/inkerly'
+	preprocess: preprocess(),
+	kit: {
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: null,
+			strict: false,
+		}),
+		paths: {
+			base: '/inkerly',
+		},
+		prerender: {
+			entries: ['*'],
+		},
 	},
-	prerender: {
-		entries: ['*']
-	}
-},
-  vitePlugin: {
-    vite: {
-      plugins: [
-        VitePWA({
-          registerType: 'autoUpdate',
-          manifest: {
-            name: 'Inkerly',
-            short_name: 'Inkerly',
-            start_url: '/',
-            display: 'standalone',
-            background_color: '#ffffff',
-            theme_color: '#000000',
-            icons: [
-              {
-                src: '/icon.svg',
-                sizes: '512x512',
-                type: 'image/svg+xml',
-              }
-            ]
-          }
-        })
-      ]
-    }
-  }
-};
+	vitePlugin: {
+		vite: {
+			plugins: [
+				VitePWA({
+					registerType: 'autoUpdate',
+					manifest: {
+						name: 'Inkerly',
+						short_name: 'Inkerly',
+						start_url: '/inkerly/',
+						display: 'standalone',
+						background_color: '#ffffff',
+						theme_color: '#000000',
+						icons: [
+							{
+								src: '/inkerly/icon.svg', // also match base path
+								sizes: '512x512',
+								type: 'image/svg+xml',
+							},
+						],
+					},
+				}),
+			],
+		},
+	},
+}
 
-export default config;
+export default config
