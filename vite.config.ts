@@ -3,11 +3,13 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+	base: '/inkerly/',
 	plugins: [
 		sveltekit(),
 		VitePWA({
 			registerType: 'autoUpdate',
 			includeAssets: ['icon.png'],
+			manifestFilename: 'manifest.webmanifest',
 			manifest: {
 				name: 'Inkerly',
 				short_name: 'Inkerly',
@@ -17,13 +19,12 @@ export default defineConfig({
 				theme_color: '#ec4899',
 				icons: [
 					{
-						src: 'icon.png',
+						src: '/inkerly/icon.png',
 						sizes: '512x512',
 						type: 'image/png'
 					}
 				]
 			}
 		})
-	],
-	base: '/inkerly/'
+	]
 });

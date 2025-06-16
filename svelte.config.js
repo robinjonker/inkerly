@@ -1,8 +1,6 @@
-import adapter from '@sveltejs/adapter-static'
-import preprocess from 'svelte-preprocess'
-import { VitePWA } from 'vite-plugin-pwa'
+import adapter from '@sveltejs/adapter-static';
+import preprocess from 'svelte-preprocess';
 
-/** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: preprocess(),
 	kit: {
@@ -10,39 +8,19 @@ const config = {
 			pages: 'build',
 			assets: 'build',
 			fallback: null,
-			strict: false,
+			strict: false
 		}),
 		paths: {
-			base: '/inkerly',
+			base: '/inkerly'
 		},
 		prerender: {
 			entries: ['*'],
-		},
-	},
-	vitePlugin: {
-		vite: {
-			plugins: [
-				VitePWA({
-					registerType: 'autoUpdate',
-					manifest: {
-						name: 'Inkerly',
-						short_name: 'Inkerly',
-						start_url: '/inkerly/',
-						display: 'standalone',
-						background_color: '#ffffff',
-						theme_color: '#000000',
-						icons: [
-							{
-								src: '/inkerly/icon.svg', // also match base path
-								sizes: '512x512',
-								type: 'image/svg+xml',
-							},
-						],
-					},
-				}),
-			],
-		},
-	},
-}
+			handleHttpError: ({ path, status }) => {
+				if (path.endsWith('manifest.webmanifest') && status === 404) return 'continue';
+				return 'fail';
+			}
+		}
+	}
+};
 
-export default config
+export default config;
