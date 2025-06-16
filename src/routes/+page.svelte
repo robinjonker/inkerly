@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { Settings } from 'lucide-svelte'
+  import { base } from '$app/paths';
 
 	let pyodide: any
 	let imgFile: File | null = null
@@ -101,7 +102,7 @@ with open('out_full.png', 'wb') as f: f.write(full)
 
 			<div class="flex items-center mb-1">
 				<img
-					src="/icon.png"
+					src="{base}/icon.png"
 					alt="Inkerly logo"
 					class="h-10 w-10 rounded-full border-2 border-white mr-2 p-1"
 				/>
