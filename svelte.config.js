@@ -2,8 +2,6 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 
-const dev = process.env.NODE_ENV === 'development';
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: preprocess(),
@@ -12,14 +10,13 @@ const config = {
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-      // fallback for client-side routing on gh-pages
       fallback: '404.html',
       strict: false
     }),
 
+    // GH Pages base path
     paths: {
-      // only use the "/inkerly" base when building for prod
-      base: dev ? '' : '/inkerly'
+      base: '/inkerly'
     },
 
     prerender: {
@@ -31,8 +28,6 @@ const config = {
         return 'fail';
       }
     }
-
-    // -- note: no trailingSlash here --
   }
 };
 
