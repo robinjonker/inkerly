@@ -1,11 +1,24 @@
 import adapter from '@sveltejs/adapter-static';
+import preprocess from 'svelte-preprocess';
 import { VitePWA } from 'vite-plugin-pwa';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  kit: {
-    adapter: adapter(),
-  },
+  preprocess: preprocess(),
+kit: {
+	adapter: adapter({
+		pages: 'build',
+		assets: 'build',
+		fallback: null,
+		strict: false
+	}),
+	paths: {
+		base: '/inkerly'
+	},
+	prerender: {
+		entries: ['*']
+	}
+},
   vitePlugin: {
     vite: {
       plugins: [

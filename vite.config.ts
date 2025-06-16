@@ -7,23 +7,23 @@ export default defineConfig({
 		sveltekit(),
 		VitePWA({
 			registerType: 'autoUpdate',
-			includeAssets: ['favicon.ico', 'icon.png'], // icons in static/
+			includeAssets: ['icon.png'],
 			manifest: {
 				name: 'Inkerly',
 				short_name: 'Inkerly',
-				start_url: '/',
+				start_url: '/inkerly/',
 				display: 'standalone',
-				background_color: '#1f2937', // Tailwind bg-gray-800
-				theme_color: '#ec4899',      // Tailwind pink-500
+				background_color: '#1f2937',
+				theme_color: '#ec4899',
 				icons: [
 					{
-						src: '/icon.png',
+						src: 'icon.png',
 						sizes: '512x512',
-						type: 'image/png',
-						purpose: 'any maskable'
+						type: 'image/png'
 					}
 				]
 			}
 		})
-	]
+	],
+	base: '/inkerly/'
 });
